@@ -1,0 +1,88 @@
+#!/bin/bash
+
+# {{ ansible_managed }}
+
+### BEGIN INIT INFO
+# Provides:          jira
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Initscript for Atlassian JIRA
+# Description:  Automatically start Atlassian JIRA when the system starts up.
+#               Provide commands for manually starting and stopping JIRA.
+### END INIT INFO
+
+JIRA_OWNER={{ jira_owner }}
+JIRA_GROUP={{ jira_group }}
+JIRA_HOME={{ jira_home }}
+JIRA_CATALINA={{ jira_catalina }}
+JIRA_CATALINA_PID={{ jira_catalina }}/work/catalina.pid
+
+start() {
+    echo "Starting JIRA: "
+
+    mkdir -p ${JIRA_HOME}
+    chmod -f 755 ${JIRA_HOME}
+    chown -Rf ${JIRA_OWNER}:${JIRA_GROUP} ${JIRA_HOME}
+
+    if [ "x${USER}" != "x${JIRA_OWNER}" ]; then
+        su -s /bin/bash ${JIRA_OWNER} -c "${JIRA_CATALINA}/bin/start-jira.sh $@"
+    else
+        ${JIRA_CATALINA}/bin/start-jira.sh $@
+    fi
+
+    echo "done."
+}
+
+stop() {
+    echo "Shutting down JIRA: "
+
+    if [ "x${USER}" != "x${JIRA_OWNER}" ]; then
+        su -s /bin/bash ${JIRA_OWNER} -c "${JIRA_CATALINA}/bin/stop-jira.sh $@"
+    else
+        ${JIRA_CATALINA}/bin/stop-jira.sh $@
+    fi
+
+    echo "done."
+}
+
+status() {
+    if [ -f ${JIRA_CATALINA_PID} ]; then
+        PID=$(<${JIRA_CATALINA_PID})
+        if $(kill -0 "${PID:-}" 2> /dev/null); then
+            echo "JIRA is running"
+            exit 0
+        elif ps "${PID:-}" > /dev/null 2>&1; then
+            echo "JIRA is running"
+            exit 0
+        else
+            echo "JIRA is not running (pidfile exists)"
+            exit 1
+        fi
+    fi
+
+    echo "JIRA is not running"
+
+    exit 3
+}
+
+case "$1" in
+    start)
+        start ${@:2}
+        ;;
+    stop)
+        stop ${@:2}
+        ;;
+    restart)
+        stop ${@:2}
+        start ${@:2}
+        ;;
+    status)
+        status
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+        ;;
+esac

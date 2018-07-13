@@ -1,0 +1,9 @@
+[base:children]
+database
+www
+
+[database]
+confluence_test.dmz
+
+[www]
+confluence_test.dmz
