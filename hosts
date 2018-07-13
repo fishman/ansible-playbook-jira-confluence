@@ -4,6 +4,10 @@ www
 confluence
 jira
 
+[java:children]
+confluence
+jira
+
 [database]
 confluence_test.dmz
 
