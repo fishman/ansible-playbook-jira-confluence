@@ -1,0 +1,7 @@
+postgresql_databases:
+  - name: jira_production
+
+postgresql_users:
+  - name: jira_production
+    password: jira_production
+    db: jira_production

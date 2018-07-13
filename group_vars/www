@@ -1,0 +1,56 @@
+firewall_state: started
+firewall_enabled_at_boot: true
+firewall_allowed_tcp_ports:
+  - "22"
+  - "80"
+  - "443"
+
+nginx_http_params:
+  - sendfile on
+  - tcp_nopush on
+  - tcp_nodelay on
+  - keepalive_timeout 30
+  - types_hash_max_size 2048
+  - open_file_cache max=200000 inactive=20s
+  - open_file_cache_valid 30s
+  - open_file_cache_min_uses 2
+  - open_file_cache_errors on
+  - client_body_timeout 10
+  - send_timeout 2
+  - reset_timedout_connection on
+
+# The user to run nginx
+nginx_user: nginx
+
+# nginx_worker_processes: 2
+
+# A list of directives for the events section.
+nginx_events_params:
+ - worker_connections  16384
+ - multi_accept on
+
+nginx_configs:
+  proxy:
+    - proxy_set_header Host $http_host
+    - proxy_set_header X-Real-IP $remote_addr
+    - proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
+    - proxy_set_header X-Forwarded-Proto $scheme
+  gzip:
+    - gzip on
+    - gzip_min_length 10240
+    - gzip_proxied expired no-cache no-store private auth
+    - gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml
+    - gzip_disable msie6
+nginx_sites:
+ default:
+   - listen 80
+   - server_name _
+   - root "/usr/share/nginx/html"
+   - index index.html
+   - location ~* ^.+\.(css|js|png|jpg)$ {
+       root   /usr/share/nginx/html;
+       access_log off;
+       expires 48h;
+       break;
+     }
+   - location / { root   /usr/share/nginx/html; index  index.html index.htm; try_files $uri $uri/ $uri.html =404; }

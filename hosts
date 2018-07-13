@@ -1,9 +1,17 @@
-[base:children]
+[security:children]
 database
 www
+confluence
+jira
 
 [database]
 confluence_test.dmz
 
 [www]
+confluence_test.dmz
+
+[confluence]
+confluence_test.dmz
+
+[jira]
 confluence_test.dmz
