@@ -1,4 +1,5 @@
 # Jira / Confluence deployment
+[![Build Status](https://travis-ci.org/fishman/ansible-playbook-jira-confluence.svg?branch=master)](https://travis-ci.org/fishman/ansible-playbook-jira-confluence)
 
 ## Installing recent ansible
 
