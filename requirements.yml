@@ -4,4 +4,5 @@
 - src: ansiblebit.oracle-java
   version: 5.14.12
 - src: geerlingguy.postgresql
+- src: geerlingguy.firewall
 - src: jdauphant.nginx
