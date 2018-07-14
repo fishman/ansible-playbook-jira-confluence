@@ -1,0 +1,30 @@
+- name: apply common configuration to all nodes
+  hosts: all
+
+  tasks:
+  - name: Set public keys
+    authorized_key:
+      user: root
+      state: present
+      key: '{{ item }}'
+    with_file:
+      - public_keys/default
+  - name: Copy kvhh proxy certificate
+    copy:
+      src: proxy.ca.crt
+      dest: /etc/pki/ca-trust/source/anchors/proxy.ca.crt
+      owner: root
+      group: root
+      mode: 0644
+      backup: yes
+    register: proxy_update
+
+  - name: Enable trust store
+    command: update-ca-trust enable
+    when:
+      - proxy_update is changed
+
+  - name: Update trust store
+    command: update-ca-trust extract
+    when:
+      - proxy_update is changed

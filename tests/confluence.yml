@@ -1,0 +1,9 @@
+- hosts: confluence
+  gather_facts: true
+
+  roles:
+    - role: ansiblebit.oracle-java
+      become: yes
+    - role: alvistack.confluence
+      become: yes
+      tags: confluence

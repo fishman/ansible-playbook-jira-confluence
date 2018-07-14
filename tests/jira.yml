@@ -1,0 +1,9 @@
+- hosts: jira
+  gather_facts: true
+
+  roles:
+    - role: ansiblebit.oracle-java
+      become: yes
+    - role: alvistack.jira
+      become: yes
+      tags: jira

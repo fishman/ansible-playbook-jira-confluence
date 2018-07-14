@@ -3,7 +3,7 @@ services: docker
 
 env:
   - distro: centos7
-    playbook: ../site.yml
+    playbook: site.yml
 
 script:
   # Configure test script so we can run extra tests after playbook is run.

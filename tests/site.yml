@@ -1,0 +1,9 @@
+# - import_playbook: database.yml
+# - import_playbook: www.yml
+- import_playbook: confluence.yml
+# - import_playbook: jira.yml
+
+- hosts: all
+  roles:
+    - role: geerlingguy.firewall
+      become: yes
