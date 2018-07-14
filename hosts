@@ -1,8 +1,9 @@
-[security:children]
+[business_workflow:children]
 database
 www
 confluence
 jira
+environments
 
 [java:children]
 confluence
@@ -19,3 +20,17 @@ confluence_test.dmz
 
 [jira]
 confluence_test.dmz
+
+[environments:children]
+dev
+stage
+prod
+
+[dev]
+confluence_test.dmz
+
+[stage]
+# empty
+
+[prod]
+# empty

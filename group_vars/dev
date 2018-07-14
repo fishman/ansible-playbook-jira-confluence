@@ -1,0 +1,6 @@
+jira_context_path: "/jira"
+jira_scheme: "http"
+jira_proxy_name: "dev.jira.local"
+confluence_context_path: "/confluence"
+confluence_scheme: "http"
+confluence_proxy_name: "dev.jira.local"
