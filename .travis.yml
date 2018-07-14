@@ -9,5 +9,11 @@ script:
   - export container_id=$(date +%s)
   - export cleanup=false
 
+  # Download test shim.
+  - chmod +x ${PWD}/test.sh
+
+  # Run tests.
+  - ${PWD}/test.sh
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

@@ -5,10 +5,6 @@ confluence
 jira
 environments
 
-[java:children]
-confluence
-jira
-
 [database]
 confluence_test.dmz
 
