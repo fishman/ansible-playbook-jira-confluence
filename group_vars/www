@@ -36,7 +36,7 @@ nginx_configs:
     - proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
     - proxy_set_header X-Forwarded-Proto $scheme
   gzip:
-    - gzip on
+    - gzip off
     - gzip_min_length 10240
     - gzip_proxied expired no-cache no-store private auth
     - gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml
@@ -45,12 +45,26 @@ nginx_sites:
  default:
    - listen 80
    - server_name _
-   - root "/usr/share/nginx/html"
-   - index index.html
-   - location ~* ^.+\.(css|js|png|jpg)$ {
-       root   /usr/share/nginx/html;
-       access_log off;
-       expires 48h;
-       break;
+   - location /jira {
+       client_max_body_size 10M;
+       proxy_set_header X-Forwarded-Host $host;
+       proxy_set_header X-Forwarded-Server $host;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
+       proxy_pass http://localhost:8080/jira;
      }
-   - location / { root   /usr/share/nginx/html; index  index.html index.htm; try_files $uri $uri/ $uri.html =404; }
+   - location /confluence {
+       client_max_body_size 100m;
+       proxy_set_header X-Forwarded-Host $host;
+       proxy_set_header X-Forwarded-Server $host;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
+       proxy_pass http://localhost:8090/confluence;
+     }
+   - location /synchrony {
+       proxy_set_header X-Forwarded-Host $host;
+       proxy_set_header X-Forwarded-Server $host;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+       proxy_pass http://localhost:8091/synchrony;
+       proxy_http_version 1.1;
+       proxy_set_header Upgrade $http_upgrade;
+       proxy_set_header Connection "Upgrade";
+     }
