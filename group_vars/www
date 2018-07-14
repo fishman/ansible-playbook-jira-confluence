@@ -45,6 +45,7 @@ nginx_sites:
  default:
    - listen 80
    - server_name _
+   - rewrite ^/$ /jira redirect;
    - location /jira {
        client_max_body_size 10M;
        proxy_set_header X-Forwarded-Host $host;

@@ -3,4 +3,4 @@
 confluence_url: "https://downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-6.8.5.tar.gz"
 jira_url: "https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.11.0.tar.gz"
 oracle_java_version: 8
-oracle_java_home: "/usr/java/jdk1.{{ oracle_java_version }}.0_{{ oracle_java_version_update }}-amd64"
+oracle_java_home: "/usr/java/latest"

@@ -4,6 +4,7 @@
   roles:
     - role: ansiblebit.oracle-java
       become: yes
+      tags: java
     - role: alvistack.confluence
       become: yes
       tags: confluence
