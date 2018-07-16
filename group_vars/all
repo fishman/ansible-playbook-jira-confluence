@@ -5,3 +5,4 @@ confluence_url: "https://downloads.atlassian.com/software/confluence/downloads/a
 jira_url: "https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-7.11.0.tar.gz"
 oracle_java_version: 8
 oracle_java_home: "/usr/java/latest"
+oracle_java_download_timeout: 30

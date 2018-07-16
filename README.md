@@ -19,9 +19,18 @@ On Ubuntu
 
 JIRA / Confluence don't work with OpenJDK and require Java 8. Newer versions of the ansiblebit role only support Java 9.
 
-    ansible-galaxy install ansiblebit.oracle-java,5.14.12
+
+## Enabling the corporate proxy
+
+You can add a corporate proxy by setting the environment information in group_vars/proxy
+
+    proxy_env:
+      http_proxy: http://proxy:8080
+      https_proxy: http://proxy:8080
+
 
 ## TODO
 - [ ] fail2ban configuration
-- [ ] partition layout
-- [ ] nginx config
+- [ ] system hardening
+- [x] partition layout
+- [x] nginx config
