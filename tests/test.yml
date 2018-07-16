@@ -33,7 +33,7 @@
       become: yes
     - role: jdauphant.nginx
     - role: geerlingguy.firewall
-    - role: ansiblebit.oracle-java
+    - role: fishman.oracle_java
     - role: alvistack.jira
     - role: alvistack.confluence
 

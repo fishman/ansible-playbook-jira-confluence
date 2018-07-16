@@ -1,7 +1,7 @@
 ---
 - src: alvistack.confluence
 - src: alvistack.jira
-- src: fishman.oracle-java
+- src: fishman.oracle_java
 - src: geerlingguy.postgresql
 - src: geerlingguy.firewall
 - src: jdauphant.nginx
