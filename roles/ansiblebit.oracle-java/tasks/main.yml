@@ -16,6 +16,9 @@
     - "{{ role_path }}/defaults/{{ ansible_os_family | lower }}.yml"
   tags: installation
 
+- include: vars.yml
+  tags: installation
+
 - include: debug.yml
   when: debug | default(false)
   tags: debug
