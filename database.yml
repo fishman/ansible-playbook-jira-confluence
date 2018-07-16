@@ -1,6 +1,8 @@
 - hosts: database
   gather_facts: true
 
+  environment: "{{proxy_env}}"
+
   pre_tasks:
     - name: make selinux permissive
       selinux:

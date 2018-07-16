@@ -1,3 +1,6 @@
+[proxy:children]
+business_workflow
+
 [business_workflow:children]
 database
 www
