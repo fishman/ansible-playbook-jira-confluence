@@ -1,5 +1,10 @@
 - hosts: all
   become: yes
+  vars:
+    oracle_java_version: 8
+    oracle_java_home: "/usr/java/latest"
+    oracle_java_download_timeout: 30
+
   pre_tasks:
     - name: install PostgreSQL 9.6 repository
       yum:
