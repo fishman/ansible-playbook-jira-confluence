@@ -1,8 +1,7 @@
 ---
 - src: alvistack.confluence
 - src: alvistack.jira
-- src: ansiblebit.oracle-java
-  version: 5.14.12
+- src: fishman.oracle-java
 - src: geerlingguy.postgresql
 - src: geerlingguy.firewall
 - src: jdauphant.nginx
