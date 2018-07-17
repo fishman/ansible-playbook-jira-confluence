@@ -4,3 +4,10 @@ jira_proxy_name: "dev.jira.local"
 confluence_context_path: "/confluence"
 confluence_scheme: "http"
 confluence_proxy_name: "dev.jira.local"
+confluence_connector_port: "8090"
+confluence_server_port: "8000"
+jira_connector_port: "8080"
+jira_server_port: "8005"
+jira_proxy_upstream: localhost:8080
+confluence_proxy_upstream: localhost:8090
+synchrony_proxy_upstream: localhost:8091

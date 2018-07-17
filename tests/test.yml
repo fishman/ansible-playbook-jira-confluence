@@ -6,6 +6,9 @@
     oracle_java_download_timeout: 30
 
   pre_tasks:
+    - name: include dev environment variables
+      include_vars: "{{ inventory_dir }}/group_vars/dev.yml"
+
     - name: install PostgreSQL 9.6 repository
       yum:
         name: https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
