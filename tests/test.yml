@@ -9,6 +9,7 @@
     - add_host:
         name: "{{ inventory_hostname }}"
         groups: dev
+        changed: false
 
     - name: install PostgreSQL 9.6 repository
       yum:
