@@ -5,3 +5,6 @@
 - src: geerlingguy.postgresql
 - src: geerlingguy.firewall
 - src: jdauphant.nginx
+- src: dev-sec.os-hardening
+- src: dev-sec.ssh-hardening
+- src: dev-sec.nginx-hardening
