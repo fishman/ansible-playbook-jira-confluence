@@ -6,8 +6,9 @@
     oracle_java_download_timeout: 30
 
   pre_tasks:
-    - name: include dev environment variables
-      include_vars: "{{ inventory_dir }}/group_vars/dev.yml"
+    - add_host:
+        name: "{{ inventory_hostname }}"
+        groups: dev
 
     - name: install PostgreSQL 9.6 repository
       yum:
@@ -44,4 +45,3 @@
     - role: fishman.oracle_java
     - role: alvistack.jira
     - role: alvistack.confluence
-
