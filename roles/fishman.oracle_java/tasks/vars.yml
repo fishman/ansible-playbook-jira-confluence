@@ -1,0 +1,55 @@
+---
+# Variable configuration.
+- name: Define oracle_java_os_supported.
+  set_fact:
+    oracle_java_os_supported: "{{ __oracle_java_os_supported }}"
+  when: oracle_java_os_supported is not defined
+
+- name: Define oracle_java_cache_valid_time.
+  set_fact:
+    oracle_java_cache_valid_time: "{{ __oracle_java_cache_valid_time }}"
+  when: 
+    - ansible_os_family == "Debian" 
+    - oracle_java_cache_valid_time is not defined
+
+- name: Define oracle_java_home.
+  set_fact:
+    oracle_java_home: "{{ __oracle_java_home }}"
+  when:
+    - (ansible_os_family == "RedHat" or ansible_os_family == "Debian") 
+    - oracle_java_home is not defined
+
+- name: Define oracle_java_state.
+  set_fact:
+    oracle_java_state: "{{ __oracle_java_state }}"
+  when: 
+    - ansible_os_family == "Debian" 
+    - oracle_java_state is not defined
+
+- name: Define oracle_java_rpm_validate_certs.
+  set_fact:
+    oracle_java_rpm_validate_certs: "{{ __oracle_java_rpm_validate_certs }}"
+  when: 
+    - ansible_os_family == "RedHat"
+    - oracle_java_rpm_validate_certs is not defined
+
+- name: Define oracle_java_download_timeout.
+  set_fact:
+    oracle_java_download_timeout: "{{ __oracle_java_download_timeout }}"
+  when:
+    - ansible_os_family == "RedHat"
+    - oracle_java_download_timeout is not defined
+
+- name: Define oracle_java_dmg_filename.
+  set_fact:
+    oracle_java_dmg_filename: "{{ __oracle_java_dmg_filename }}"
+  when: 
+    - ansible_os_family == "Darwin"
+    - oracle_java_dmg_filename is not defined
+
+- name: Define oracle_java_dmg_url.
+  set_fact:
+    oracle_java_dmg_url: "{{ __oracle_java_dmg_url }}"
+  when:
+    - ansible_os_family == "Darwin"
+    - oracle_java_dmg_url is not defined
