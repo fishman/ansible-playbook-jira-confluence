@@ -18,12 +18,10 @@
       become: yes
 
   tasks:
-    - name: install system packages
+    - name: upgrade all packages
       yum:
-        name: "{{ item }}"
-        state: installed
-      with_items:
-        - "@Development tools"
+        name: '*'
+        state: latest
       become: yes
 
   roles:
