@@ -4,9 +4,13 @@
 - import_playbook: jira.yml
 - hosts: all
   become: yes
-  tasks:
+  pre_tasks:
     - name: upgrade all packages
       yum:
         name: '*'
         state: latest
       become: yes
+  roles:
+    - role: fishman.sesam_backup
+      become: yes
+

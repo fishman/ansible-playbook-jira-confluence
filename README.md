@@ -28,6 +28,9 @@ You can add a corporate proxy by setting the environment information in group_va
       http_proxy: http://proxy:8080
       https_proxy: http://proxy:8080
 
+## Sesam Backup integration
+
+-- http://wiki.sep.de/wiki/index.php/SEP_Sesam_Scripts#Ansible 
 
 ## TODO
 - [ ] fail2ban configuration
