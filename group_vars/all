@@ -6,3 +6,5 @@ jira_url: "https://downloads.atlassian.com/software/jira/downloads/atlassian-jir
 oracle_java_version: 8
 oracle_java_home: "/usr/java/latest"
 oracle_java_download_timeout: 30
+postgres_repo_url: "https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm"
+sesam_backup_url: sesam.fqdn.com

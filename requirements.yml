@@ -2,9 +2,11 @@
 - src: alvistack.confluence
 - src: alvistack.jira
 - src: fishman.oracle_java
+- src: fishman.sep_sesam
 - src: geerlingguy.postgresql
 - src: geerlingguy.firewall
 - src: jdauphant.nginx
 - src: dev-sec.os-hardening
 - src: dev-sec.ssh-hardening
 - src: dev-sec.nginx-hardening
+- src: srsp.oracle-java

@@ -1,0 +1,3 @@
+sesam_url: https://download.sep.de/linux/RedHat/x86_64/RHEL7/sesam_cli-4.4.3-48.rhel7.x86_64.rpm
+sesam_install: "/opt/sesam/bin/sesam/"
+sesam_backup_server: "backup_server_hostname.full_qualified_domain.com"

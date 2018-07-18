@@ -1,0 +1,11 @@
+---
+- name: install sesam backup cli
+  yum:
+    name: "{{ sesam_url }}"
+    state: present
+  become: yes
+
+- name: allow access from any sesam server
+  command: '{{ sesam_install }}/sm_setup set_client "{{ sesam_backup_server }}"'
+  become: yes
+  changed_when: false

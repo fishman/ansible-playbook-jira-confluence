@@ -1,0 +1,17 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: fishman
+  description: Sesam Backup.
+  role_name: "sesam-backup"
+  company: ""
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.4
+  platforms:
+    - name: EL
+      versions:
+      - 6
+      - 7
+  galaxy_tags:
+    - backup
