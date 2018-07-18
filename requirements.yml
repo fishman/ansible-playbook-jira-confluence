@@ -2,7 +2,7 @@
 - src: alvistack.confluence
 - src: alvistack.jira
 - src: fishman.oracle_java
-- src: fishman.sep_sesam
+- src: fishman.sesam_backup
 - src: geerlingguy.postgresql
 - src: geerlingguy.firewall
 - src: jdauphant.nginx
